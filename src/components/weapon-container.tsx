@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react"
+import { IWeapon } from "../shared/types";
 
 const weaponContainerStyle = {
    display: 'flex',
@@ -24,11 +25,6 @@ const weaponButtonsContainerStyles = {
    padding: '1rem',
 };
 
-export interface IWeapon {
-   id: string;
-   name: string;
-   image: string;
-}
 
 export const WeaponContainer: FunctionComponent<{ weapon: IWeapon, onNextWeapon: () => void, onPreviousWeapon: () => void }> =
     // props

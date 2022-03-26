@@ -1,9 +1,10 @@
 import * as React from "react"
-import { IWeapon, WeaponContainer } from "../components/weapon-container";
+import { WeaponContainer } from "../components/weapon-container";
 import { useEffect, useState } from "react";
 
-import weapons from "../assets/weapons.json";
+import weapons from "../shared/assets/weapons.json";
 import { WeaponsService } from "../services/weapons-service";
+import { IWeapon } from "../shared/types";
 
 // styles
 const pageStyles = {
@@ -13,13 +14,12 @@ const pageStyles = {
    margin: "0",
 }
 
-const weaponsService = new WeaponsService(weapons)
-
 // markup
 const IndexPage = () => {
    const [filteredWeapons, setFilteredWeapons] = useState<IWeapon[]>(weapons);
    const [currentWeaponIndex, setCurrentWeaponIndex] = useState<number>(0);
    const [currentWeapon, setCurrentWeapon] = useState<IWeapon>(filteredWeapons[currentWeaponIndex]);
+
    const onNextWeapon = async () => {
       setCurrentWeaponIndex(currentWeaponIndex + 1);
    };
