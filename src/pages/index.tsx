@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 
 import weapons from "../shared/assets/weapons.json";
 import { WeaponsService } from "../services/weapons-service";
-import { IWeapon } from "../shared/types";
+import { IPlayerStats, IWeapon } from "../shared/types";
+import { PlayerStatsForm } from "../components/player-stats-form";
 
 // styles
 const pageStyles = {
    fontFamily: "-apple-system, Roboto, sans-serif, serif",
    display: "flex",
+   flexDirection: "column" as "column",
    justifyContent: "center",
    margin: "0",
 }
@@ -40,8 +42,17 @@ const IndexPage = () => {
       }));
    }, [currentWeaponIndex]);
 
+   function onStatsSubmit(playerStats: IPlayerStats) {
+      const filteredWeapons = WeaponsService.filterWeapons(weapons, playerStats);
+      const sortedWeapons = WeaponsService.sortWeapons(filteredWeapons);
+      console.log(sortedWeapons);
+      setFilteredWeapons(sortedWeapons);
+      setCurrentWeapon(sortedWeapons[0]);
+   }
+
    return (
        <main style={pageStyles}>
+          <PlayerStatsForm onSubmit={onStatsSubmit}/>
           <WeaponContainer weapon={currentWeapon} onNextWeapon={onNextWeapon} onPreviousWeapon={onPreviousWeapon}/>
        </main>
    )
