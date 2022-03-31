@@ -25,7 +25,8 @@ const weaponButtonsContainerStyles = {
    padding: '1rem',
 };
 
-
+// TODO: FunctionComponent vs props interface
+// @see PlayerStatsForm in player-stats-form.tsx
 export const WeaponContainer: FunctionComponent<{ weapon: IWeapon, onNextWeapon: () => void, onPreviousWeapon: () => void }> =
     // props
     ({

@@ -5,18 +5,25 @@ import { useEffect, useState } from "react";
 import weapons from "../shared/assets/weapons.json";
 import { WeaponsService } from "../services/weapons-service";
 import { IPlayerStats, IWeapon } from "../shared/types";
-import { PlayerStatsForm } from "../components/player-stats-form";
+import { PlayerStatsForm } from "../components/PlayerStatsForm/player-stats-form";
 
-// styles
+/**
+ * Styles
+ */
+
 const pageStyles = {
    fontFamily: "-apple-system, Roboto, sans-serif, serif",
    display: "flex",
-   flexDirection: "column" as "column",
+   alignItems: "center",
    justifyContent: "center",
    margin: "0",
+   flexWrap: "wrap" as "wrap",
 }
 
-// markup
+/**
+ * Markup
+ */
+
 const IndexPage = () => {
    const [filteredWeapons, setFilteredWeapons] = useState<IWeapon[]>(weapons);
    const [currentWeaponIndex, setCurrentWeaponIndex] = useState<number>(0);
