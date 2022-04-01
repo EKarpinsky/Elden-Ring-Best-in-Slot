@@ -1,4 +1,5 @@
 import { IPlayerStats, IWeapon } from "../shared/types";
+import { weaponSumAttack } from "./weapon-sum-attack";
 
 export const WeaponsService = {
 
@@ -11,21 +12,13 @@ export const WeaponsService = {
       });
    },
 
+
+
    sortWeapons: (weapons: IWeapon[]) => {
       return weapons.sort((a: IWeapon, b: IWeapon) => {
          // add up every property in the attack property of the weapon, except for Crit. Sort by sums in descending order
-         const aSum = Object.keys(a.attack).reduce((acc, key) => {
-            if (key !== "Crit") {
-               return acc + a.attack[key as keyof IWeapon["attack"]]!;
-            }
-            return acc;
-         }, 0);
-         const bSum = Object.keys(b.attack).reduce((acc, key) => {
-            if (key !== "Crit") {
-               return acc + b.attack[key as keyof IWeapon["attack"]]!;
-            }
-            return acc;
-         }, 0);
+         const aSum = weaponSumAttack(a);
+         const bSum = weaponSumAttack(b)
          return bSum - aSum;
       });
    }

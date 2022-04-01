@@ -26,3 +26,11 @@ export interface IPlayerStats {
    Arc: number;
    Fai: number;
 }
+
+export interface IWeaponContainerProps {
+   weapon: IWeapon;
+   onNextWeapon: () => void;
+   onPreviousWeapon: () => void;
+   weaponIndex: number;
+   weaponArrayLength: number;
+}

@@ -1,14 +1,17 @@
 import type { GatsbyConfig } from "gatsby"
 
 const config: GatsbyConfig = {
-   siteMetadata: {
-      siteUrl: `https://www.yourdomain.tld`,
-   },
    plugins: [
       `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
-      `gatsby-source-filesystem`,
+      {
+         resolve: `gatsby-source-filesystem`,
+         options: {
+            name: `pages`,
+            path: `C:\\Users\\mitch\\WebstormProjects\\EldenRingBestInSlot\\EldenRingBestInSlot\\src\\pages`,
+         },
+      },
    ],
 }
 
